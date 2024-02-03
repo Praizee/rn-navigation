@@ -14,7 +14,7 @@ export default function AboutScreen({ navigation, route }) {
       <Text style={styles.text}>About {name}</Text>
       <Button
         title="Update the name"
-        onPress={() => navigation.setParams({ name: "Codevolution" })}
+        onPress={() => navigation.setParams({ name: "Adeola" })}
       />
       <Button
         title="Go back with data"
