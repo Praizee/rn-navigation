@@ -1,37 +1,56 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "./screens/HomeScreen";
-import AboutScreen from "./screens/AboutScreen";
-import { Pressable, Text } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import SettingsScreen from "./screens/SettingsScreen";
+import CourseListScreen from "./screens/CourseList";
+import ProfileScreen from "./screens/Profile";
+import Ionicons from "@expo/vector-icons/Ionicons";
+// import { AboutStack } from "./AppStack";
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
+      <Tab.Navigator
         screenOptions={{
-          headerStyle: { backgroundColor: "#6a51ae" },
-          headerTitleStyle: { fontWeight: "bold" },
-          headerTintColor: "#fff",
-          contentStyle: { backgroundColor: "#e8e4f3" },
-          headerRight: () => (
-            <Pressable onPress={() => alert("Menu button pressed!")}>
-              <Text style={{ color: "#fff", fontSize: 16 }}>Menu</Text>
-            </Pressable>
-          ),
+          tabBarLabelPosition: "below-icon",
+          // tabBarShowLabel: false, //show or hide label
+          tabBarActiveTintColor: "purple",
+          tabBarInactiveTintColor: "#000",
         }}
       >
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
+        <Tab.Screen
+          name="Course List"
+          component={CourseListScreen}
           options={{
-            title: "Welcome Home!",
+            tabBarLabel: "Course List",
+            tabBarIcon: ({ color }) => (
+              <Ionicons name={"school"} size={20} color={color} />
+            ),
           }}
         />
-        <Stack.Screen name="About" component={AboutScreen} />
-      </Stack.Navigator>
+        <Tab.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            tabBarLabel: "My Profile",
+            tabBarIcon: ({ color }) => (
+              <Ionicons name={"person"} size={20} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{
+            tabBarLabel: "Settings",
+            tabBarIcon: ({ color }) => (
+              <Ionicons name={"settings"} size={20} color={color} />
+            ),
+            tabBarBadge: 2, //for notifications
+          }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
