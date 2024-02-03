@@ -23,24 +23,24 @@ export default function App() {
           name="Course List"
           component={CourseListScreen}
           options={{
-            tabBarLabel: "Course List",
+            tabBarLabel: "Courses",
             tabBarIcon: ({ color }) => (
               <Ionicons name={"school"} size={20} color={color} />
             ),
           }}
         />
         <Tab.Screen
-          name="Profile"
+          name="My Profile"
           component={ProfileScreen}
           options={{
-            tabBarLabel: "My Profile",
+            tabBarLabel: "Profile",
             tabBarIcon: ({ color }) => (
               <Ionicons name={"person"} size={20} color={color} />
             ),
           }}
         />
         <Tab.Screen
-          name="Settings"
+          name="Account Settings"
           component={SettingsScreen}
           options={{
             tabBarLabel: "Settings",
